@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-char *caesarCipher(char *plain, int key)
+char *caesar(char *plain, int key)
 {
     int len = strlen(plain);
     char *cipher = malloc(len + 1);
@@ -28,21 +28,55 @@ char *caesarCipher(char *plain, int key)
     return cipher;
 }
 
+char *playfair(char *plain, char *keyword)
+{
+    int len = strlen(plain);
+    char *cipher = malloc(len + 1);
+
+    cipher[len] = '\0';
+    return cipher;
+}
+
+char *vigenere(char *plain, char *keyword)
+{
+    int len = strlen(plain);
+    int kLen = strlen(keyword);
+    char key[len];
+    char *cipher = malloc(len + 1);
+
+    for (int i = 0; i < len; i++)
+    {
+        key[i] = keyword[i % kLen] - 'a';
+    }
+
+    for (int i = 0; i < len; i++)
+    {
+        if (islower(plain[i]))
+        {
+            cipher[i] = ((key[i] + (plain[i] - 'a')) % 26) + 'a';
+        }
+        else if (isupper(plain[i]))
+        {
+            cipher[i] = ((key[i] + (plain[i] - 'A')) % 26) + 'A';
+        }
+        else
+        {
+            cipher[i] = plain[i];
+        }
+    }
+
+    cipher[len] = '\0';
+    return cipher;
+}
+
 int main()
 {
-    char plain[50];
-    int key;
+    char *plain = "we are discovered save yourself";
+    char *keyword = "deceptive";
+    char *cipher = vigenere(plain, keyword);
 
-    printf("Enter the plain text [it's size is 50 character]:\n");
-    fgets(plain, sizeof(plain), stdin);
-    printf("Enter the key:\n");
-    scanf("%d", &key);
-
-    char *cipher = caesarCipher(plain, key);
-
-    printf("Plain text: %s", plain);
-    printf("Cipher text: %s", cipher);
-    printf("Key: %d\n", key);
+    printf("Plain  text: %s\n", plain);
+    printf("Cipher text: %s\n", cipher);
 
     free(cipher);
 }
