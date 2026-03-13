@@ -69,14 +69,65 @@ char *vigenere(char *plain, char *keyword)
     return cipher;
 }
 
+char *hill()
+{
+}
+
+int **matrixMul(int (*mat1)[3], int (*mat2)[1])
+{
+    int rows = 3;
+    int cols = 1;
+
+    int **sum = malloc(rows * sizeof(int *));
+
+    for (int i = 0; i < 3; i++)
+    {
+        sum[i] = malloc(cols * sizeof(int));
+    }
+
+    for (int k = 0; k < rows; k++)
+    {
+        for (int l = 0; l < cols; l++)
+        {
+            int accum = 0;
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+                    accum += (mat1[j][i]) * (mat2[i][j]);
+                }
+            }
+
+            sum[k][l] = accum;
+        }
+    }
+
+    return sum;
+}
+
 int main()
 {
-    char *plain = "we are discovered save yourself";
-    char *keyword = "deceptive";
-    char *cipher = vigenere(plain, keyword);
+    int arr1[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9},
+    };
 
-    printf("Plain  text: %s\n", plain);
-    printf("Cipher text: %s\n", cipher);
+    int arr2[3][1] = {
+        {2},
+        {5},
+        {7}};
 
-    free(cipher);
+    int **sum;
+    sum = matrixMul(arr1, arr2);
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 1; j++)
+        {
+            printf("%d,", sum[i][j]);
+        }
+        printf("\n");
+    }
 }
