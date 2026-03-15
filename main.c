@@ -3,6 +3,13 @@
 #include <string.h>
 #include <ctype.h>
 
+struct matrix
+{
+    int rows;
+    int cols;
+    int data[3][3];
+};
+
 char *caesar(char *plain, int key)
 {
     int len = strlen(plain);
@@ -73,60 +80,48 @@ char *hill()
 {
 }
 
-int **matrixMul(int (*mat1)[3], int (*mat2)[1])
+struct matrix matrixMul(struct matrix mat1, struct matrix mat2)
 {
-    int rows = 3;
-    int cols = 1;
+    int mat1Rows = mat1.rows;
+    int mat2Cols = mat2.cols;
 
-    int **sum = malloc(rows * sizeof(int *));
+    int rows = mat1Rows;
+    int cols = mat2Cols;
+    struct matrix answer = {rows,cols};
 
-    for (int i = 0; i < 3; i++)
+    int accum = 0;
+
+    for (int k = 0; k < cols; k++)
     {
-        sum[i] = malloc(cols * sizeof(int));
-    }
-
-    for (int k = 0; k < rows; k++)
-    {
-        for (int l = 0; l < cols; l++)
+        for (int z = 0; z < rows; z++)
         {
-            int accum = 0;
-
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < 1; j++)
+                for (int j = 0; j < cols; j++)
                 {
-                    accum += (mat1[j][i]) * (mat2[i][j]);
+                    accum += (mat1.data[j + z][i]) * (mat2.data[i][j]);
                 }
             }
-
-            sum[k][l] = accum;
+            answer.data[z][k] = accum;
+            accum = 0;
         }
     }
 
-    return sum;
+    return answer;
 }
 
 int main()
 {
-    int arr1[3][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9},
-    };
+    struct matrix arr1 = {3, 3, {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
+    struct matrix arr2 = {3, 1, {{2},{5},{7}}};
 
-    int arr2[3][1] = {
-        {2},
-        {5},
-        {7}};
-
-    int **sum;
-    sum = matrixMul(arr1, arr2);
+    struct matrix sum = matrixMul(arr1, arr2);
 
     for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 1; j++)
+        for (int j = 0; j < 3; j++)
         {
-            printf("%d,", sum[i][j]);
+            printf("%d,", sum.data[i][j]);
         }
         printf("\n");
     }
