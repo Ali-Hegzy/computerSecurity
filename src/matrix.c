@@ -6,6 +6,8 @@
 
 void printMatrix(Matrix *mat)
 {
+    if (mat == NULL) return;
+
     for (int i = 0; i < mat->rows; i++)
     {
         for (int j = 0; j < mat->cols; j++)
