@@ -2,7 +2,7 @@ typedef struct
 {
     int rows;
     int cols;
-    int **data;
+    int *data;
 } Matrix;
 
 void printMatrix(Matrix *mat);
