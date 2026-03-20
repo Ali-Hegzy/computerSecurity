@@ -48,3 +48,35 @@ void endMatrix(Matrix *mat)
 {
     free(mat);
 }
+
+Matrix *matrixMul(Matrix *mat1, Matrix *mat2)
+{
+    if (mat1->cols != mat2->rows)
+    {
+        printf("Columns of first matrix does not equal the Rows of Second matrix.\n");
+        return NULL;
+    }
+
+    int *num = malloc(mat1->rows * mat2->cols * sizeof(int));
+
+    if (num == NULL)
+        return NULL;
+
+    int accum = 0;
+
+    for (int i = 0; i < mat1->rows; i++)
+    {
+        for (int j = 0; j < mat2->cols; j++)
+        {
+            accum = 0;
+            for (int k = 0; k < mat1->cols; k++)
+            {
+                accum += (mat1->data[i * mat1->cols + k]) * (mat2->data[k * mat2->cols + j]);
+            }
+            num[i * mat2->cols + j] = accum;
+        }
+    }
+
+    Matrix *answer = mat(mat1->rows, mat2->cols, num);
+    return answer;
+}
