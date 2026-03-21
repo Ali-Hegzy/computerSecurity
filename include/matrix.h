@@ -14,3 +14,5 @@ void fillMatrix(Matrix *mat, int *data);
 void endMatrix(Matrix *mat);
 
 Matrix *matrixMul(Matrix *mat1, Matrix *mat2);
+
+Matrix *scalarModules(Matrix *mat,int num);

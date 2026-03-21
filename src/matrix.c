@@ -82,3 +82,16 @@ Matrix *matrixMul(Matrix *mat1, Matrix *mat2)
     Matrix *answer = mat(mat1->rows, mat2->cols, num);
     return answer;
 }
+
+Matrix *scalarModules(Matrix *mat,int num)
+{
+    for(int i=0;i< mat->rows;i++)
+    {
+        for (int j = 0;j < mat->cols; j++)
+        {
+            mat->data[i * mat->cols + j] %= num;
+        }
+    }
+
+    return mat;
+}
