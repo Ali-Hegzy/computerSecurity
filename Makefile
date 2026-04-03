@@ -4,5 +4,5 @@ build:
 	gcc main.c src/ciphers.c src/matrix.c -o main
 run:
 	./main
-test:
+Test:
 	gcc test.c src/ciphers.c src/matrix.c -o test && ./test
