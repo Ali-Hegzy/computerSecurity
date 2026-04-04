@@ -1,1 +1,2 @@
 char *input();
+long inputPosNum();

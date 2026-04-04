@@ -1,6 +1,7 @@
 #include "../include/inputs.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 
 char *input()
 {
@@ -36,4 +37,33 @@ char *input()
     }
 
     return text;
+}
+
+long inputPosNum()
+{
+    long new;
+    while (1)
+    {
+        char *str = input();
+        char *end;
+        
+        errno = 0;
+        new = strtol(str, &end, 10);
+
+        if (errno == ERANGE)
+        {
+            printf("Large number detected, Enter a smaller number\n");
+            continue;
+        }
+
+        if (*end != '\0' || new < 0 || str == end)
+        {
+            printf("Enter a valid positive number\n");
+            continue;
+        }
+
+        break;
+    }
+
+    return new;
 }
