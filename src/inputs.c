@@ -19,7 +19,7 @@ char *input()
         if (x == '\n' || x == EOF)
             break;
 
-        text[i] = (char) x;
+        text[i] = (char)x;
         i++;
         if (i == size - 1)
         {
@@ -47,24 +47,25 @@ long inputPosNum()
     {
         char *str = input();
         char *end;
-        
+
         errno = 0;
         new = strtol(str, &end, 10);
 
         if (errno == ERANGE)
         {
             printf("Large number detected, Enter a smaller number\n");
+            free(str);
             continue;
         }
 
         if (*end != '\0' || new < 0 || str == end)
         {
             printf("Enter a valid positive number\n");
+            free(str);
             continue;
         }
 
-        break;
+        free(str);
+        return new;
     }
-
-    return new;
 }
