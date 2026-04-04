@@ -1,3 +1,6 @@
+#ifndef MATRIX_H
+#define MATRIX_H
+
 typedef struct
 {
     int rows;
@@ -16,3 +19,5 @@ void endMatrix(Matrix *mat);
 Matrix *matrixMul(Matrix *mat1, Matrix *mat2);
 
 Matrix *scalarModules(Matrix *mat,int num);
+
+#endif
