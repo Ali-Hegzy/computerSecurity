@@ -6,22 +6,22 @@
 char *input()
 {
     int size = 10;
-    char *text = malloc(10 * 1);
+    char *text = malloc(size);
 
     if (text == NULL)
         return NULL;
 
     int i = 0;
-    char x;
+    int x;
     while (1)
     {
         x = getchar();
-        if (x == '\n')
+        if (x == '\n' || x == EOF)
             break;
 
-        text[i] = x;
+        text[i] = (char) x;
         i++;
-        if (i == size)
+        if (i == size - 1)
         {
             char *tmp = realloc(text, size + 10);
             if (tmp != NULL)
@@ -35,6 +35,7 @@ char *input()
             }
         }
     }
+    text[i] = '\0';
 
     return text;
 }
