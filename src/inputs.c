@@ -69,3 +69,33 @@ long inputPosNum()
         return new;
     }
 }
+
+long inputNum()
+{
+    long new;
+    while (1)
+    {
+        char *str = input();
+        char *end;
+
+        errno = 0;
+        new = strtol(str, &end, 10);
+
+        if (errno == ERANGE)
+        {
+            printf("Large number detected, Enter a smaller number\n");
+            free(str);
+            continue;
+        }
+
+        if (str == end || (*end != '\0' && *end != '\n'))
+        {
+            printf("Enter a valid number\n");
+            free(str);
+            continue;
+        }
+
+        free(str);
+        return new;
+    }
+}

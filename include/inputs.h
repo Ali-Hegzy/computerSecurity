@@ -5,4 +5,6 @@ char *input();
 
 long inputPosNum();
 
+long inputNum();
+
 #endif
