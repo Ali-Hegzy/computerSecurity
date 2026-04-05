@@ -1,6 +1,8 @@
 #ifndef CIPHERS_H
 #define CIPHERS_H
 
+#include "matrix.h"
+
 char *caesar(char *plain, int key);
 
 char *vigenere(char *plain, char *keyword);

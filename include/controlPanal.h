@@ -3,4 +3,5 @@
 
 void draw();
 
+char *ceaserPanal();
 #endif
