@@ -6,7 +6,8 @@
 
 void printMatrix(Matrix *mat)
 {
-    if (mat == NULL) return;
+    if (mat == NULL)
+        return;
 
     for (long i = 0; i < mat->rows; i++)
     {
@@ -84,11 +85,11 @@ Matrix *matrixMul(Matrix *mat1, Matrix *mat2)
     return answer;
 }
 
-Matrix *scalarModules(Matrix *mat,long num)
+Matrix *scalarModules(Matrix *mat, long num)
 {
-    for(long i=0;i< mat->rows;i++)
+    for (long i = 0; i < mat->rows; i++)
     {
-        for (long j = 0;j < mat->cols; j++)
+        for (long j = 0; j < mat->cols; j++)
         {
             mat->data[i * mat->cols + j] %= num;
         }

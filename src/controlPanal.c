@@ -22,18 +22,18 @@ void draw()
     }
 }
 
-char* ceaserPanal()
+char *ceaserPanal()
 {
     printf("Enter the plain text\n");
-    char* plain = input();
+    char *plain = input();
     printf("Enter the key\n");
     long key = inputPosNum();
-    return caesar(plain,key);
+    return caesar(plain, key);
 }
 /**
  * @brief
  * حقل ادخال عام يقوم باخذ رقم الاختيار من المستخدم و التحقق من صحته و يوجه للشفرة المطلوبة
- * @return 
+ * @return
  * النص المشفر
  */
 /**
@@ -42,7 +42,7 @@ char* ceaserPanal()
  * @return
  * The encrypted cipher.
  */
-char* takeCipher()
+char *takeCipher()
 {
     while (1)
     {
@@ -57,10 +57,9 @@ char* takeCipher()
         {
         case 1:
             return ceaserPanal();
-        
+
         default:
             printf("Not Found\n");
         }
-
     }
 }

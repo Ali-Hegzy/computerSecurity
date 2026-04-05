@@ -18,6 +18,6 @@ void endMatrix(Matrix *mat);
 
 Matrix *matrixMul(Matrix *mat1, Matrix *mat2);
 
-Matrix *scalarModules(Matrix *mat,long num);
+Matrix *scalarModules(Matrix *mat, long num);
 
 #endif

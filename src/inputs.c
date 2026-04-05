@@ -120,7 +120,7 @@ Matrix *inputMatrix()
         }
     }
 
-    Matrix* temp = mat(rows, cols, nums);
+    Matrix *temp = mat(rows, cols, nums);
 
     return temp;
 }
