@@ -3,5 +3,7 @@
 
 void draw();
 
+char *takeCipher();
+
 char *ceaserPanal();
 #endif

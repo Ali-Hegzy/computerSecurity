@@ -30,3 +30,37 @@ char* ceaserPanal()
     long key = inputPosNum();
     return caesar(plain,key);
 }
+/**
+ * @brief
+ * حقل ادخال عام يقوم باخذ رقم الاختيار من المستخدم و التحقق من صحته و يوجه للشفرة المطلوبة
+ * @return 
+ * النص المشفر
+ */
+/**
+ * @brief
+ * General input gate that take the number of cipher the user need and check it them route the user to the needed cipher.
+ * @return
+ * The encrypted cipher.
+ */
+char* takeCipher()
+{
+    while (1)
+    {
+        long choice = inputPosNum();
+        if (choice >= size)
+        {
+            printf("undefind choice\n");
+            continue;
+        }
+
+        switch (choice)
+        {
+        case 1:
+            return ceaserPanal();
+        
+        default:
+            printf("Not Found\n");
+        }
+
+    }
+}
