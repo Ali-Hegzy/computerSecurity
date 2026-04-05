@@ -48,6 +48,7 @@ void fillMatrix(Matrix *mat, long *data)
 
 void endMatrix(Matrix *mat)
 {
+    free(mat->data);
     free(mat);
 }
 
