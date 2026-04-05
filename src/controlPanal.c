@@ -22,10 +22,15 @@ void draw()
     }
 }
 
-char *ceaserPanal()
+char *takePlain()
 {
     printf("Enter the plain text\n");
     char *plain = input();
+}
+
+char *ceaserPanal()
+{
+    char* plain = takePlain();
     printf("Enter the key\n");
     long key = inputPosNum();
     return caesar(plain, key);
