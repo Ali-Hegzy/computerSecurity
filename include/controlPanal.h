@@ -3,9 +3,12 @@
 
 void draw();
 
-char *takeCipher();
+char *takePlain();
 
 char *ceaserPanal();
 
-char *takePlain();
+char *vigenerePanal();
+
+char *takeCipher();
+
 #endif

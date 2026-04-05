@@ -30,11 +30,20 @@ char *takePlain()
 
 char *ceaserPanal()
 {
-    char* plain = takePlain();
+    char *plain = takePlain();
     printf("Enter the key\n");
     long key = inputPosNum();
     return caesar(plain, key);
 }
+
+char *vigenerePanal()
+{
+    char *plain = takePlain();
+    printf("Enter the keyword\n");
+    char *keyword = input();
+    return vigenere(plain, keyword);
+}
+
 /**
  * @brief
  * حقل ادخال عام يقوم باخذ رقم الاختيار من المستخدم و التحقق من صحته و يوجه للشفرة المطلوبة
@@ -62,7 +71,8 @@ char *takeCipher()
         {
         case 1:
             return ceaserPanal();
-
+        case 3:
+            return vigenerePanal();
         default:
             printf("Not Found\n");
         }
