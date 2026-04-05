@@ -8,17 +8,17 @@ void printMatrix(Matrix *mat)
 {
     if (mat == NULL) return;
 
-    for (int i = 0; i < mat->rows; i++)
+    for (long i = 0; i < mat->rows; i++)
     {
-        for (int j = 0; j < mat->cols; j++)
+        for (long j = 0; j < mat->cols; j++)
         {
-            printf("%3d,", mat->data[i * mat->cols + j]);
+            printf("%3ld,", mat->data[i * mat->cols + j]);
         }
         printf("\n");
     }
 }
 
-Matrix *mat(int rows, int cols, int *data)
+Matrix *mat(long rows, long cols, long *data)
 {
     Matrix *temp = malloc(sizeof(Matrix));
 
@@ -28,7 +28,7 @@ Matrix *mat(int rows, int cols, int *data)
     temp->rows = rows;
     temp->cols = cols;
 
-    temp->data = malloc(temp->rows * temp->cols * sizeof(int));
+    temp->data = malloc(temp->rows * temp->cols * sizeof(long));
 
     if (temp->data == NULL)
     {
@@ -41,7 +41,7 @@ Matrix *mat(int rows, int cols, int *data)
     return temp;
 }
 
-void fillMatrix(Matrix *mat, int *data)
+void fillMatrix(Matrix *mat, long *data)
 {
     mat->data = data;
 }
@@ -59,19 +59,19 @@ Matrix *matrixMul(Matrix *mat1, Matrix *mat2)
         return NULL;
     }
 
-    int *num = malloc(mat1->rows * mat2->cols * sizeof(int));
+    long *num = malloc(mat1->rows * mat2->cols * sizeof(long));
 
     if (num == NULL)
         return NULL;
 
-    int accum = 0;
+    long accum = 0;
 
-    for (int i = 0; i < mat1->rows; i++)
+    for (long i = 0; i < mat1->rows; i++)
     {
-        for (int j = 0; j < mat2->cols; j++)
+        for (long j = 0; j < mat2->cols; j++)
         {
             accum = 0;
-            for (int k = 0; k < mat1->cols; k++)
+            for (long k = 0; k < mat1->cols; k++)
             {
                 accum += (mat1->data[i * mat1->cols + k]) * (mat2->data[k * mat2->cols + j]);
             }
@@ -83,11 +83,11 @@ Matrix *matrixMul(Matrix *mat1, Matrix *mat2)
     return answer;
 }
 
-Matrix *scalarModules(Matrix *mat,int num)
+Matrix *scalarModules(Matrix *mat,long num)
 {
-    for(int i=0;i< mat->rows;i++)
+    for(long i=0;i< mat->rows;i++)
     {
-        for (int j = 0;j < mat->cols; j++)
+        for (long j = 0;j < mat->cols; j++)
         {
             mat->data[i * mat->cols + j] %= num;
         }

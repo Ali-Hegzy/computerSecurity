@@ -1,4 +1,5 @@
 #include "../include/inputs.h"
+#include "../include/matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -98,4 +99,28 @@ long inputNum()
         free(str);
         return new;
     }
+}
+
+Matrix *inputMatrix()
+{
+    printf("Enter the number of rows\n");
+    long rows = inputNum();
+
+    printf("Enter the number of columns\n");
+    long cols = inputNum();
+
+    long *nums = malloc(rows * cols * sizeof(long));
+
+    for (long i = 0; i < rows; i++)
+    {
+        for (long j = 0; j < cols; j++)
+        {
+            printf("Enter the element in row number %ld and column number %ld\n", i + 1, j + 1);
+            nums[i * cols + j] = inputNum();
+        }
+    }
+
+    Matrix* temp = mat(rows, cols, nums);
+
+    return temp;
 }

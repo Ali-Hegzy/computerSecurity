@@ -69,7 +69,7 @@ char *hill(char *plain, Matrix *key)
 
     for (int i = 0; i < (len - 2); i += 3)
     {
-        int num[3];
+        long num[3];
         Matrix *temp = mat(3, 1, num);
 
         for (int j = 0; j < 3; j++)

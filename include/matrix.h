@@ -3,21 +3,21 @@
 
 typedef struct
 {
-    int rows;
-    int cols;
-    int *data;
+    long rows;
+    long cols;
+    long *data;
 } Matrix;
 
 void printMatrix(Matrix *mat);
 
-Matrix *mat(int rows, int cols, int *data);
+Matrix *mat(long rows, long cols, long *data);
 
-void fillMatrix(Matrix *mat, int *data);
+void fillMatrix(Matrix *mat, long *data);
 
 void endMatrix(Matrix *mat);
 
 Matrix *matrixMul(Matrix *mat1, Matrix *mat2);
 
-Matrix *scalarModules(Matrix *mat,int num);
+Matrix *scalarModules(Matrix *mat,long num);
 
 #endif
