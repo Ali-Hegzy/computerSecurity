@@ -1,5 +1,5 @@
 #include "../include/controlPanal.h"
-#include "../include/ciphers.h"
+#include "../include/ciphers/ciphers.h"
 #include "../include/inputs.h"
 #include <stdio.h>
 char *ciphers[] = {"Ceaser", "Hill", "Vigener", "DES", "AES"};
