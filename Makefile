@@ -1,7 +1,7 @@
 buildRun:
 	gcc main.c src/ciphers/utilites.c src/ciphers/ciphers.c src/matrix.c src/inputs.c src/controlPanal.c -o main && ./main
 build:
-	gcc main.c src/ciphers.c src/matrix.c src/inputs.c src/controlPanal.c -o main
+	gcc main.c src/ciphers/utilites.c src/ciphers/ciphers.c src/matrix.c src/inputs.c src/controlPanal.c -o main
 run:
 	./main
 Test:
