@@ -24,7 +24,6 @@ uint64_t permute(uint64_t input)
 char *strrev(char *text)
 {
     int len = strlen(text);
-    printf("%d\n", len);
     char *new = malloc(len + 1);
     int j = len - 1;
     for (int i = 0; i < len; i++)
