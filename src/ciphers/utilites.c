@@ -36,3 +36,19 @@ char *strrev(char *text)
 
     return new;
 }
+
+uint8_t *take64bit(int start, char *text)
+{
+    uint8_t *part = malloc(9);
+    int textStart = start;
+
+    for (int i = 0; i < (start + 8); i++)
+    {
+        part[i] = text[textStart];
+        textStart += 1;
+    }
+
+    part[8] = '\0';
+
+    return part;
+}
