@@ -92,7 +92,7 @@ char *hill(char *plain, Matrix *key)
 
         for (int j = 0; j < key->rows; j++)
         {
-            num[j] = plain[i + j];
+            num[j] = plain[i + j] - 32;
         }
 
         Matrix *matOfNums = scalarModules(matrixMul(key, temp), 95);
