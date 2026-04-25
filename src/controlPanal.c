@@ -33,24 +33,38 @@ char *ceaserPanal()
 {
     char *plain = takePlain();
     printf("Enter the key\n");
+
     long key = inputPosNum();
-    return caesar(plain, key);
+
+    char *cipherText = caesar(plain, key);
+
+    free(plain);
+    return cipherText;
 }
 
 char *vigenerePanal()
 {
     char *plain = takePlain();
     printf("Enter the keyword\n");
+
     char *keyword = input();
-    return vigenere(plain, keyword);
+
+    char *cipherText = vigenere(plain, keyword);
+
+    free(plain);
+    free(keyword);
+    return cipherText;
 }
 
 char *hillPanal()
 {
     char *plain = takePlain();
     printf("Enter the keyword\n");
+
     Matrix *keyword = inputMatrix(1);
+
     char *cipherText = hill(plain, keyword);
+
     free(plain);
     endMatrix(keyword);
     return cipherText;
