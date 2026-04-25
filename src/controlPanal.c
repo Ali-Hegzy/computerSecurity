@@ -2,7 +2,8 @@
 #include "../include/ciphers/ciphers.h"
 #include "../include/inputs.h"
 #include <stdio.h>
-char *ciphers[] = {"Ceaser", "Hill", "Vigener", "DES", "AES"};
+#include <stdlib.h>
+char *ciphers[] = {"Ceaser", "Vigener", "Hill"};
 int size = sizeof(ciphers) / sizeof(*ciphers);
 
 void draw()
@@ -44,6 +45,17 @@ char *vigenerePanal()
     return vigenere(plain, keyword);
 }
 
+char *hillPanal()
+{
+    char *plain = takePlain();
+    printf("Enter the keyword\n");
+    Matrix *keyword = inputMatrix();
+    char *cipherText = hill(plain, keyword);
+    free(plain);
+    endMatrix(keyword);
+    return cipherText;
+}
+
 /**
  * @brief
  * حقل ادخال عام يقوم باخذ رقم الاختيار من المستخدم و التحقق من صحته و يوجه للشفرة المطلوبة
@@ -61,7 +73,7 @@ char *takeCipher()
     while (1)
     {
         long choice = inputPosNum();
-        if (choice >= size)
+        if (choice > size)
         {
             printf("undefind choice\n");
             continue;
@@ -71,8 +83,10 @@ char *takeCipher()
         {
         case 1:
             return ceaserPanal();
-        case 3:
+        case 2:
             return vigenerePanal();
+        case 3:
+            return hillPanal();
         default:
             printf("Not Found\n");
         }

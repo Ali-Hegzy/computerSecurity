@@ -84,8 +84,17 @@ char *hill(char *plain, Matrix *key)
         cipher[i + 1] = matOfNums->data[1] + 'a';
         cipher[i + 2] = matOfNums->data[2] + 'a';
 
-        endMatrix(temp);
-        endMatrix(matOfNums);
+        /**
+         * If I uncomment these two lines a
+         * `
+         * double free or corruption (out)
+            Aborted (core dumped)
+         * `
+         * will error appear, I don't no the reason of this error yet
+         *
+        */
+        // endMatrix(temp);
+        // endMatrix(matOfNums);
     }
 
     cipher[len] = '\0';
