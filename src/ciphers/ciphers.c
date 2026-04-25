@@ -66,35 +66,44 @@ char *vigenere(char *plain, char *keyword)
 char *hill(char *plain, Matrix *key)
 {
     int len = strlen(plain);
-    char *cipher = malloc(len + 1);
-
-    for (int i = 0; i < (len - 2); i += 3)
+    char *cipher;
+    int diff = len % (key->rows);
+    if (diff != 0)
     {
-        long num[3];
-        Matrix *temp = mat(3, 1, num);
-
-        for (int j = 0; j < 3; j++)
+        char *temp = malloc((len + diff) * sizeof(char));
+        for (int i = 0; i < len; i++)
         {
-            num[j] = ((plain[j + i] - 'a') % 26);
+            temp[i] = plain[i];
+        }
+        for (int i = len; i < (len + diff); i++)
+        {
+            temp[i] = 'x';
+        }
+        len = strlen(temp);
+        plain = temp;
+    }
+
+    cipher = malloc(len + 1);
+
+    for (int i = 0; i < len; i += (key->rows) /*or (key->cols)*/)
+    {
+        long *num = malloc(key->rows * sizeof(long));
+        Matrix *temp = mat(key->rows, 1, num);
+
+        for (int j = 0; j < key->rows; j++)
+        {
+            num[j] = plain[i + j];
         }
 
-        Matrix *matOfNums = scalarModules(matrixMul(key, temp), 26);
+        Matrix *matOfNums = scalarModules(matrixMul(key, temp), 95);
 
-        cipher[i] = matOfNums->data[0] + 'a';
-        cipher[i + 1] = matOfNums->data[1] + 'a';
-        cipher[i + 2] = matOfNums->data[2] + 'a';
+        for (int k = 0; k < key->rows; k++)
+        {
+            cipher[i + k] = matOfNums->data[k] + 32;
+        }
 
-        /**
-         * If I uncomment these two lines a
-         * `
-         * double free or corruption (out)
-            Aborted (core dumped)
-         * `
-         * error will appear, I don't no the reason of this error yet
-         *
-        */
-        // endMatrix(temp);
-        // endMatrix(matOfNums);
+        endMatrix(temp);
+        endMatrix(matOfNums);
     }
 
     cipher[len] = '\0';
