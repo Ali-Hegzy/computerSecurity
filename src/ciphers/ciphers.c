@@ -29,23 +29,12 @@ char *vigenere(char *plain, char *keyword)
 
     for (int i = 0; i < len; i++)
     {
-        key[i] = keyword[i % kLen] - 'a';
+        key[i] = keyword[i % kLen] - 32;
     }
 
     for (int i = 0; i < len; i++)
     {
-        if (islower(plain[i]))
-        {
-            cipher[i] = ((key[i] + (plain[i] - 'a')) % 26) + 'a';
-        }
-        else if (isupper(plain[i]))
-        {
-            cipher[i] = ((key[i] + (plain[i] - 'A')) % 26) + 'A';
-        }
-        else
-        {
-            cipher[i] = plain[i];
-        }
+        cipher[i] = (((plain[i] - 32) + key[i]) % 95) + 32;
     }
 
     cipher[len] = '\0';
