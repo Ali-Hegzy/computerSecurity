@@ -13,18 +13,7 @@ char *caesar(char *plain, int key)
 
     for (int i = 0; i < strlen(plain); i++)
     {
-        if (islower(plain[i]))
-        {
-            cipher[i] = (((plain[i] - 'a') + key) % 26) + 'a';
-        }
-        else if (isupper(plain[i]))
-        {
-            cipher[i] = (((plain[i] - 'A') + key) % 26) + 'A';
-        }
-        else
-        {
-            cipher[i] = plain[i];
-        }
+        cipher[i] = (((plain[i] - 32) + key) % 95) + 32;
     }
 
     cipher[len] = '\0';
