@@ -90,7 +90,7 @@ char *hill(char *plain, Matrix *key)
          * double free or corruption (out)
             Aborted (core dumped)
          * `
-         * will error appear, I don't no the reason of this error yet
+         * error will appear, I don't no the reason of this error yet
          *
         */
         // endMatrix(temp);
