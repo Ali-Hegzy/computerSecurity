@@ -49,7 +49,7 @@ char *hillPanal()
 {
     char *plain = takePlain();
     printf("Enter the keyword\n");
-    Matrix *keyword = inputMatrix();
+    Matrix *keyword = inputMatrix(1);
     char *cipherText = hill(plain, keyword);
     free(plain);
     endMatrix(keyword);

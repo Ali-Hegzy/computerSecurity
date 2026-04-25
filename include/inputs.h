@@ -9,6 +9,6 @@ long inputPosNum();
 
 long inputNum();
 
-Matrix *inputMatrix();
+Matrix *inputMatrix(int square);
 
 #endif

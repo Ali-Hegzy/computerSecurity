@@ -101,13 +101,26 @@ long inputNum()
     }
 }
 
-Matrix *inputMatrix()
+Matrix *inputMatrix(int square)
 {
-    printf("Enter the number of rows\n");
-    long rows = inputNum();
+    long rows, cols;
+    int flag = 1;
+    while (flag)
+    {
+        printf("Enter the number of rows\n");
+        rows = inputPosNum();
 
-    printf("Enter the number of columns\n");
-    long cols = inputNum();
+        printf("Enter the number of columns\n");
+        cols = inputPosNum();
+
+        if (square && (rows != cols))
+        {
+            printf("The matrix must be a square matrix, Enter the matrix again.\n");
+            continue;
+        }
+
+        flag = 0;
+    }
 
     long *nums = malloc(rows * cols * sizeof(long));
 
