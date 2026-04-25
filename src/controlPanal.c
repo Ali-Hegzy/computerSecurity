@@ -26,7 +26,7 @@ void draw()
 char *takePlain()
 {
     printf("Enter the plain text\n");
-    char *plain = input();
+    return input();
 }
 
 char *ceaserPanal()
