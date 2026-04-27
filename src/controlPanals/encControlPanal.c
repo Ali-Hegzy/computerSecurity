@@ -3,8 +3,8 @@
 #include "../../include/inputs.h"
 #include <stdio.h>
 #include <stdlib.h>
-char *ciphers[] = {"Ceaser", "Vigener", "Hill"};
-int encSize = sizeof(ciphers) / sizeof(*ciphers);
+char *encCiphers[] = {"Ceaser", "Vigener", "Hill"};
+int encSize = sizeof(encCiphers) / sizeof(*encCiphers);
 
 void encDraw()
 {
@@ -16,7 +16,7 @@ void encDraw()
         {
             if (i + j < encSize)
             {
-                printf("%d-%s\t", (i + j + 1), ciphers[i + j]);
+                printf("%d-%s\t", (i + j + 1), encCiphers[i + j]);
             }
         }
         printf("\n");
