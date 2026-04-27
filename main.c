@@ -11,6 +11,7 @@
 
 int main()
 {
+    char* result;
     while (1)
     {
         mainDraw();
@@ -18,18 +19,20 @@ int main()
         {
         case 1:
             encDraw();
-            char *cipher = takeCipher();
-            printf("%s\n", cipher);
-            free(cipher);
+            result = takeCipher();
             break;
 
         case 2:
             decDraw();
-            char *plain = takeEncrypted();
-            printf("%s\n", plain);
-            free(plain);
+            result = takeEncrypted();
             break;
+
+        case 3:
+            return 0;
         }
+
+        printf("%s\n",result);
+        free(result);
         printf("==========\n");
     }
 }
