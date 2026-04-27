@@ -1,18 +1,35 @@
+#include "include/inputs.h"
 #include "include/matrix.h"
 #include "include/ciphers/enc/ciphers.h"
+#include "include/ciphers/dec/iciphers.h"
+#include "include/ciphers/enc/utilites.h"
+#include "include/controlPanals/encControlPanal.h"
+#include "include/controlPanals/decControlPanal.h"
+#include "include/controlPanals/mainPanal.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+
 int main()
 {
-    int num[] = {2, 4, 5, 9, 2, 1, 3, 17, 7};
-    Matrix *key = mat(3, 3, num);
+    while (1)
+    {
+        mainDraw();
+        switch (takeChoice())
+        {
+        case 1:
+            encDraw();
+            char *cipher = takeCipher();
+            printf("%s\n", cipher);
+            free(cipher);
+            break;
 
-    char *cipher = hill("attackatdawn", key);
-
-    printf("%s\n", cipher);
-
-    free(cipher);
-    return 0;
+        case 2:
+            decDraw();
+            char *plain = takeEncrypted();
+            printf("%s\n", plain);
+            free(plain);
+            break;
+        }
+        printf("==========\n");
+    }
 }
