@@ -1,7 +1,7 @@
 #ifndef ENCCONTROLPANAL_H
 #define ENCCONTROLPANAL_H
 
-void draw();
+void encDraw();
 
 char *takePlain();
 

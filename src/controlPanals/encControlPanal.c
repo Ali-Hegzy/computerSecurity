@@ -6,7 +6,7 @@
 char *ciphers[] = {"Ceaser", "Vigener", "Hill"};
 int size = sizeof(ciphers) / sizeof(*ciphers);
 
-void draw()
+void encDraw()
 {
     int eleInRow = 2;
 
