@@ -3,7 +3,7 @@
 #include "../../include/inputs.h"
 #include <stdio.h>
 #include <stdlib.h>
-char *decCiphers[] = {"Ceaser"};
+char *decCiphers[] = {"Ceaser", "Vigenere"};
 int decSize = sizeof(decCiphers) / sizeof(*decCiphers);
 
 void decDraw()
@@ -42,6 +42,20 @@ char *iceaserPanal()
     return plainText;
 }
 
+char *ivigenerePanal()
+{
+    char *cipher = takeCipherText();
+    printf("Enter the keyword\n");
+
+    char *keyword = input();
+
+    char *plainText = ivigenere(cipher, keyword);
+
+    free(cipher);
+    free(keyword);
+    return plainText;
+}
+
 char *takeEncrypted()
 {
     while (1)
@@ -57,6 +71,8 @@ char *takeEncrypted()
         {
         case 1:
             return iceaserPanal();
+        case 2:
+            return ivigenerePanal();
         default:
             printf("Not Found\n");
         }

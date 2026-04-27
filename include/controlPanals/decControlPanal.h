@@ -7,6 +7,8 @@ char *takeCipherText();
 
 char *iceaserPanal();
 
+char *ivigenerePanal();
+
 char *takeEncrypted();
 
 #endif
