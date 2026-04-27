@@ -1,4 +1,4 @@
 test
 test.c
 pointsToMake.txt
-/src/ciphers/26cipher.c
+/src/ciphers/enc/26cipher.c

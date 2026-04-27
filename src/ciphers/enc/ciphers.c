@@ -1,6 +1,6 @@
-#include "../../include/matrix.h"
-#include "../../include/ciphers/utilites.h"
-#include "../../include/ciphers/ciphers.h"
+#include "../../../include/matrix.h"
+#include "../../../include/ciphers/enc/utilites.h"
+#include "../../../include/ciphers/enc/ciphers.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
