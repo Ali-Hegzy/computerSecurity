@@ -4,17 +4,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 char *ciphers[] = {"Ceaser", "Vigener", "Hill"};
-int size = sizeof(ciphers) / sizeof(*ciphers);
+int encSize = sizeof(ciphers) / sizeof(*ciphers);
 
 void encDraw()
 {
     int eleInRow = 2;
 
-    for (int i = 0; i < size; i += eleInRow)
+    for (int i = 0; i < encSize; i += eleInRow)
     {
         for (int j = 0; j < eleInRow; j++)
         {
-            if (i + j < size)
+            if (i + j < encSize)
             {
                 printf("%d-%s\t", (i + j + 1), ciphers[i + j]);
             }
@@ -87,7 +87,7 @@ char *takeCipher()
     while (1)
     {
         long choice = inputPosNum();
-        if (choice > size)
+        if (choice > encSize)
         {
             printf("undefind choice\n");
             continue;
