@@ -1,6 +1,6 @@
-#include "../include/controlPanal.h"
-#include "../include/ciphers/enc/ciphers.h"
-#include "../include/inputs.h"
+#include "../../include/controlPanals/encControlPanal.h"
+#include "../../include/ciphers/enc/ciphers.h"
+#include "../../include/inputs.h"
 #include <stdio.h>
 #include <stdlib.h>
 char *ciphers[] = {"Ceaser", "Vigener", "Hill"};

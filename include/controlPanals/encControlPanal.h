@@ -1,5 +1,5 @@
-#ifndef CONTROLPANAL_H
-#define CONTROLPANAL_H
+#ifndef ENCCONTROLPANAL_H
+#define ENCCONTROLPANAL_H
 
 void draw();
 
