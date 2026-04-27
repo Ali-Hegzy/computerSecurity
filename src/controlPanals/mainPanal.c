@@ -1,12 +1,12 @@
 #include "../../include/controlPanals/mainPanal.h"
 #include "../../include/inputs.h"
 #include <stdio.h>
-char *options[] = {"Encryption", "Decryption"};
+char *options[] = {"Encryption", "Decryption", "Close"};
 int mainSize = sizeof(options) / sizeof(*options);
 
 void mainDraw()
 {
-    int eleInRow = 2;
+    int eleInRow = 3;
 
     for (int i = 0; i < mainSize; i += eleInRow)
     {
