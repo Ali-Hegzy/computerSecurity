@@ -11,7 +11,13 @@ char *icaesar(char *cipher, int key)
 
     for (int i = 0; i < strlen(cipher); i++)
     {
-        plain[i] = (((cipher[i] - 32) - key) % 95) + 32;
+        int operation = (cipher[i] - 32) - key;
+        while (operation < 0)
+        {
+            operation += 95;
+        }
+
+        plain[i] = operation + 32;
     }
 
     plain[len] = '\0';
@@ -40,7 +46,7 @@ char *ivigenere(char *cipher, char *keyword)
             operation += 95;
         }
 
-        plain[i] = (operation % 95) + 32;
+        plain[i] = operation + 32;
     }
 
     plain[len] = '\0';
